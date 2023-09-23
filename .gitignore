@@ -1,3 +1,5 @@
 bbc-category-urls.txt
 postgresconfig.py
 postgres-queries.py
+openaiconfig.py
+__pycache__/openaiconfig.cpython-311.pyc

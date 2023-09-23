@@ -324,11 +324,34 @@ class BBCGoodFoodScraper(DatabaseConnection):
         except Exception as e:
             print(f"Error: {e}")
 
+    def categories_recipes(self):
+        self.cursor.execute(
+            "SELECT id, recipe_name, description FROM recipes ORDER BY id ASC LIMIT 10 OFFSET 60"
+        )
+        rows = self.cursor.fetchall()
+
+        if len(rows) == 0:
+            print("No recipe links found")
+            return
+
+        for id, recipe_name, description in rows:
+            print(
+                "ID: "
+                + str(id)
+                + " Name: "
+                + recipe_name
+                + " Description: "
+                + description
+            )
+
 
 if __name__ == "__main__":
     scraper = BBCGoodFoodScraper()
     scraper.connect_to_database()
     # scraper.get_bbc_recipe_links_from_categories()
-    scraper.get_bbc_full_recipes()
+    # scraper.get_bbc_full_recipes()
     # print(scraper.get_random_recipe())
+
+    scraper.categories_recipes()
+
     scraper.close_database_connection()
