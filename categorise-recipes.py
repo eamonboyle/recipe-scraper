@@ -10,9 +10,6 @@ api_key = openaiconfig.openaikey
 # Initialize the OpenAI API client
 openai.api_key = api_key
 
-# Initialize the OpenAI API client
-openai.api_key = api_key
-
 connection = psycopg2.connect(
     database=postgresconfig.database,
     user=postgresconfig.user,
